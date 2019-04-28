@@ -40,11 +40,11 @@ class ApiModel extends Model {
 
   static async findOrError(id) {
     if (id === undefined || isNaN(parseInt(id))) {
-      throw new ModelNotFoundException(this.name);
+      throw new ModelNotFoundException(this.name, id);
     }
     const instance = await this.find(id);
     if (!instance) {
-      throw new ModelNotFoundException(this.name);
+      throw new ModelNotFoundException(this.name, id);
     }
     return instance;
   }

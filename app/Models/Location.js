@@ -1,16 +1,19 @@
 'use strict'
 
-/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('App/Models/ApiModel')
 
 class Location extends Model {
 
-  category() {
+  categories() {
     return this.hasMany("App/Models/LocationCategory")
   }
 
   type() {
     return this.hasOne("App/Models/TypeLocation")
+  }
+
+  images() {
+    return this.hasMany("App/Models/LocationImage")
   }
 
 }

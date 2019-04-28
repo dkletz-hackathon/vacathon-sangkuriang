@@ -12,6 +12,11 @@ class LocationController extends BaseController {
     super(Location)
   }
 
+  async show({ params, response }) {
+    const relations = [{ name: "images", type: "fetch" }]
+    return await super.show({ params, response, relations })
+  }
+
   async createNewInstance({ request }) {
     const location = new Location()
     location.fill(request.only(this.storeOnly))
