@@ -17,13 +17,15 @@
 const Route = use('Route')
 
 Route.group(() => {
+  Route.get("profile", "UserController.profile")
+    .middleware(["auth"])
+  Route.put('preference', 'UserController.updatePreferences')
+    .middleware(["auth"])
   Route.resource('', 'UserController')
     .only(['update', 'store', 'show', 'index'])
     .middleware(new Map([
       [['update'], ['auth']]
     ]))
-  Route.put('preference', 'UserController.updatePreferences')
-    .middleware(["auth"])
 })
   .prefix('user')
 
@@ -31,3 +33,8 @@ Route.group(() => {
   Route.post('login', 'AuthController.login')
 })
   .prefix('auth')
+
+Route.group(() => {
+  Route.resource('', 'LocationController')
+})
+  .prefix('location')

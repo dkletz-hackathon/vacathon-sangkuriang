@@ -20,7 +20,7 @@ class UserController extends BaseController {
   async updatePreferences({ request, response, auth }) {
     const user = auth.user
     const preferences = request.input("preferences", [])
-    user.merge({ preferences })
+    user.merge({ preferences: preferences.join(",") })
     await user.save()
     return response.json(user)
   }
