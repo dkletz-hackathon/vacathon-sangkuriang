@@ -33,6 +33,7 @@ Route.group(() => {
   .prefix('auth')
 
 Route.group(() => {
+  Route.get('type/all', 'TypeLocationController.indexAllType')
   Route.resource('type', 'TypeLocationController').apiOnly()
   Route.put(':id/category', 'LocationController.updateCategory')
   Route.resource('', 'LocationController').apiOnly()

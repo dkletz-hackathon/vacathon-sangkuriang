@@ -9,6 +9,13 @@ class TypeLocationController extends BaseController {
     super(TypeLocation)
   }
 
+  async indexAllType({ response }) {
+    const locations = await TypeLocation.query()
+      .with("locations")
+      .fetch()
+    return response.json(locations)
+  }
+
   async createNewInstance({ request }) {
     const typeLocation = new TypeLocation()
     typeLocation.fill(request.only(this.storeOnly))
