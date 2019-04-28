@@ -40,7 +40,6 @@ Route.group(() => {
   .prefix('location')
 
 Route.group(() => {
-  Route.resource('location', 'LocationPlanController')
   Route.get('shared', 'TravelPlanController.indexShared')
   Route.resource('', 'TravelPlanController').apiOnly()
     .middleware(new Map([

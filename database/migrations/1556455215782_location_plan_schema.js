@@ -11,6 +11,10 @@ class LocationPlanSchema extends Schema {
       table.foreign("location_id")
         .references("locations.id")
         .onDelete("cascade")
+      table.integer("travel_plan_id").unsigned()
+      table.foreign("travel_plan_id")
+        .references("travel_plans.id")
+        .onDelete("cascade")
       table.timestamps()
     })
   }
