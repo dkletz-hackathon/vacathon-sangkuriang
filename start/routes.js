@@ -39,5 +39,15 @@ Route.group(() => {
 })
   .prefix('location')
 
+Route.group(() => {
+  Route.resource('location', 'LocationPlanController')
+  Route.get('shared', 'TravelPlanController.indexShared')
+  Route.resource('', 'TravelPlanController').apiOnly()
+    .middleware(new Map([
+      [['store', 'update', 'index'], ['auth']]
+    ]))
+})
+  .prefix('plan')
+
 Route.resource('category', 'CategoryController')
   .only(["show", "index"])

@@ -12,6 +12,10 @@ class TravelPlan extends Model {
     return this.hasOne("App/Models/TravelPlanStatistic")
   }
 
+  locationPlans() {
+    return this.hasMany("App/Models/LocationPlan")
+  }
+
 }
 
 module.exports = TravelPlan
