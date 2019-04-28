@@ -6,4 +6,4 @@ const Model = use('App/Models/ApiModel')
 class LocationCategory extends Model {
 }
 
-module.exports = LoctionCategory
+module.exports = LocationCategory
