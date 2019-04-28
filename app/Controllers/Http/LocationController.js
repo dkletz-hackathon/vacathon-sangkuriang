@@ -12,6 +12,17 @@ class LocationController extends BaseController {
     super(Location)
   }
 
+  async filterLocation({ request, response }) {
+    const preferences = request.input("preferences", [])
+    const locations = await Location.query()
+      .with("categories")
+      .whereHas("categories", (builder) => {
+        builder.whereIn("id", preferences)
+      })
+      .fetch()
+    return response.json(locations)
+  }
+
   async show({ params, response }) {
     const relations = [
       { name: "images", type: "fetch" },

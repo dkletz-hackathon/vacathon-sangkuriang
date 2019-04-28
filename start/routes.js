@@ -35,6 +35,7 @@ Route.group(() => {
 Route.group(() => {
   Route.get('type/all', 'TypeLocationController.indexAllType')
   Route.resource('type', 'TypeLocationController').apiOnly()
+  Route.post('filter', 'LocationController.filderLocation')
   Route.put(':id/category', 'LocationController.updateCategory')
   Route.resource('', 'LocationController').apiOnly()
 })
