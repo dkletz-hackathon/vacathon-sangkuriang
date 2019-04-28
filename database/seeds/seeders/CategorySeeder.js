@@ -18,7 +18,7 @@ class CategorySeeder {
 
   async run () {
     const datas = [
-      "foto", "jalan-jalan", "lari", "hiking", "kuliner", "belajar"
+      "foto", "jalan-jalan", "lari", "hiking", "kuliner", "belajar",
       "vlog", "histori", "belanja", "berenang", "co-working"
     ]
     for (const data of datas) {
