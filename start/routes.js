@@ -33,8 +33,9 @@ Route.group(() => {
   .prefix('auth')
 
 Route.group(() => {
+  Route.resource('type', 'TypeLocationController').apiOnly()
   Route.put('category', 'LocationController.updateCategory')
-  Route.resource('', 'LocationController')
+  Route.resource('', 'LocationController').apiOnly()
 })
   .prefix('location')
 

@@ -19,11 +19,6 @@ class LocationController extends BaseController {
     return location
   }
   
-  async updateInstance({ instance, request }) {
-    instance.merge(request.only(this.updateOnly))
-    await instance.save()
-  }
-
   async updateCategory({ request, response, params }) {
     const location = await Location.findOrError(params.id)
     const categories = await Category.query()

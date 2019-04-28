@@ -63,7 +63,8 @@ class BaseController {
   }
 
   async updateInstance({ instance, request }) {
-    return null
+    instance.merge(request.only(this.updateOnly))
+    await instance.save()
   }
 
   /** Helper */
