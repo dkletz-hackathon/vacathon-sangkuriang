@@ -34,7 +34,7 @@ Route.group(() => {
 
 Route.group(() => {
   Route.resource('type', 'TypeLocationController').apiOnly()
-  Route.put('category', 'LocationController.updateCategory')
+  Route.put(':id/category', 'LocationController.updateCategory')
   Route.resource('', 'LocationController').apiOnly()
 })
   .prefix('location')

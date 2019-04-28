@@ -13,7 +13,11 @@ class LocationController extends BaseController {
   }
 
   async show({ params, response }) {
-    const relations = [{ name: "images", type: "fetch" }]
+    const relations = [
+      { name: "images", type: "fetch" },
+      { name: "type", type: "first" },
+      { name: 'categories', type: "fetch" }
+    ]
     return await super.show({ params, response, relations })
   }
 
