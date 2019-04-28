@@ -17,6 +17,14 @@ class UserController extends BaseController {
     return response.json(user)
   }
 
+  async updatePreferences({ request, response, auth }) {
+    const user = auth.user
+    const preferences = request.input("preferences", [])
+    user.merge({ preferences })
+    await user.save()
+    return response.json(user)
+  }
+
   async profile({ response, auth }) {
     return response.json(auth.user)
   }

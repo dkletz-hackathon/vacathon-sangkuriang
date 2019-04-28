@@ -22,6 +22,8 @@ Route.group(() => {
     .middleware(new Map([
       [['update'], ['auth']]
     ]))
+  Route.put('preference', 'UserController.updatePreferences')
+    .middleware(["auth"])
 })
   .prefix('user')
 

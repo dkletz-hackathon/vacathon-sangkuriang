@@ -1,5 +1,6 @@
 'use strict'
 
+/** CRUD Base Controller */
 class BaseController {
 
   constructor(ObjectType) {
