@@ -40,6 +40,8 @@ Route.group(() => {
   .prefix('location')
 
 Route.group(() => {
+  Route.put(':id/shared', 'TravelPlanController.setShared')
+    .middleware(["auth"])
   Route.get('shared', 'TravelPlanController.indexShared')
   Route.resource('', 'TravelPlanController').apiOnly()
     .middleware(new Map([

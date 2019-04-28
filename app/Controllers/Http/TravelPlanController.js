@@ -41,6 +41,13 @@ class TravelPlanController extends BaseController {
     return await super.index({ request, response, filters })
   }
 
+  async setShared({ params, response }) {
+    const travelPlan = await TravelPlan.findOrError(params.id)
+    travelPlan.shared = true
+    await travelPlan.save()
+    return response.join(travelPlan)
+  }
+  
   async store({ request, response, auth }) {
     const plan = new TravelPlan()
     let preferences = request.input("preferences", []).join(",")
