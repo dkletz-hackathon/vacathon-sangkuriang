@@ -34,15 +34,17 @@ class LocationController extends BaseController {
       .whereIn("id", request.input("categories", []))
       .fetch()
     request.trx = await Database.beginTransaction()
-    for (const category of categories) {
+    for (const category of categories.rows) {
       let locCategory = await LocationCategory.query()
         .where("id", category.id)
-        .where("location", location.id)
+        .where("location_id", location.id)
         .first()
       if (!locCategory)  {
         locCategory = new LocationCategory()
         locCategory.location_id = location.id
-        locCategory.category_id = categoryID
+        locCategory.category_id = category.id
+        locCategory.category_name = category.name
+        locCategory.url_image = category.url_image
         locCategory.value = 0
       }
       locCategory.value += 1

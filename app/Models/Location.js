@@ -9,7 +9,7 @@ class Location extends Model {
   }
 
   type() {
-    return this.hasOne("App/Models/TypeLocation")
+    return this.belongsTo("App/Models/TypeLocation")
   }
 
   images() {
