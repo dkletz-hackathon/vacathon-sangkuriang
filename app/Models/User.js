@@ -6,7 +6,11 @@ const Model = use('App/Models/ApiModel')
 /** @type {import('@adonisjs/framework/src/Hash')} */
 const Hash = use('Hash')
 
-class Client extends Model {
+class User extends Model {
+
+  static get hidden() {
+    return ["password"]
+  }
 
   static boot () {
     super.boot()
@@ -18,4 +22,4 @@ class Client extends Model {
   }
 }
 
-module.exports = Client
+module.exports = User
