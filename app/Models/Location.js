@@ -10,7 +10,7 @@ class Location extends Model {
   }
 
   type() {
-    return this.hasMany("App/Models/TypeLocation")
+    return this.hasOne("App/Models/TypeLocation")
   }
 
 }
