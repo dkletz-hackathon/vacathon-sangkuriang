@@ -13,6 +13,8 @@ class LocationSchema extends Schema {
       table.string("thumbnail").notNullable()
       table.float("latitude").notNullable()
       table.float("longitude").notNullable()
+      table.integer("price_min").notNullable()
+      table.integer("price_max").notNullable()
       table.timestamps()
     })
   }
