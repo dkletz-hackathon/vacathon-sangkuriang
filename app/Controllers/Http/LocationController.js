@@ -58,14 +58,14 @@ class LocationController extends BaseController {
   get storeOnly() {
     return [
       "name", "description", "address", "thumbnail", "latitude", "longitude",
-      "price_min", "price_max", "type_id"
+      "price_min", "price_max", "type_location_id"
     ]
   }
 
   get updateOnly() {
     return [
       "name", "description", "address", "thumbnail", "latitude", "longitude",
-      "price_min", "price_max", "type_id"
+      "price_min", "price_max", "type_location_id"
     ]
   }
 
