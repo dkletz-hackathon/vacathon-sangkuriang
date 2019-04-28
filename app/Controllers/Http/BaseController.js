@@ -11,13 +11,13 @@ class BaseController {
   async index({ response, filters, relations, orders }) {
     let query = this.ObjectType.query();
     if (filters) {
-      query = await this.addFilterQuery(query ,filters)
+      query = this.addFilterQuery(query ,filters)
     }
     if (relations) {
-      query = await this.addRelationQuery(query, relations)
+      query = this.addRelationQuery(query, relations)
     }
     if (orders) {
-      query = await this.addOrderQuery(query, orders)
+      query = this.addOrderQuery(query, orders)
     }
     const instances = await query.fetch()
     return response.json(instances);
@@ -68,7 +68,7 @@ class BaseController {
   }
 
   /** Helper */
-  async addFilterQuery(query, filters) {
+  addFilterQuery(query, filters) {
     if (Array.isArray(filters)) {
       for (const filter of filters) {
         query = query.where(...filter)
@@ -79,7 +79,7 @@ class BaseController {
     return query
   }
 
-  async addRelationQuery(query, relations) {
+  addRelationQuery(query, relations) {
     if (Array.isArray(relations)) {
       for (const relation of relations) {
         query = query.with(relation)
@@ -90,7 +90,7 @@ class BaseController {
     return query
   }
 
-  async addOrderQuery(query, orders) {
+  addOrderQuery(query, orders) {
     if (Array.isArray(orders)) {
       for (const order of orders) {
         query = query.orderBy(...order)
