@@ -50,6 +50,10 @@ class TravelPlanController extends BaseController {
 
   async indexShared({ request, response }) {
     const filters = [["shared", true]]
+    const user_id = request.input("user")
+    if (user_id) {
+      filters.push(["user_id", user_id])
+    }
     return await super.index({ request, response, filters })
   }
 
