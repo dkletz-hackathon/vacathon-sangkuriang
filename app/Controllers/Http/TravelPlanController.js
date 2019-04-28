@@ -4,6 +4,7 @@ const BaseController = use("App/Controllers/Http/BaseController")
 const TravelPlan = use("App/Models/TravelPlan")
 const LocationPlan = use("App/Models/LocationPlan")
 const ModelNotFoundException = use("App/Exceptions/ModelNotFoundException")
+const moment = require("moment-timezone")
 
 class TravelPlanController extends BaseController {
 
@@ -32,7 +33,18 @@ class TravelPlanController extends BaseController {
   }
 
   async index({ request, response, auth }) {
-    const filters = [["user_id", auth.user.id]]
+    const filters = [
+      ["user_id", auth.user.id],
+      ["end_date", ">", moment(new Date()).tz("Asia/Bangkok").format("YYYY-MM-DD HH:mm:ss+07")]
+    ]
+    return await super.index({ request, response, filters })
+  }
+
+  async indexHistory({ request, response, auth }) {
+    const filters = [
+      ["user_id", auth.user.id],
+      ["end_date", "<", moment(new Date()).tz("Asia/Bangkok").format("YYYY-MM-DD HH:mm:ss+07")]
+    ]
     return await super.index({ request, response, filters })
   }
 
