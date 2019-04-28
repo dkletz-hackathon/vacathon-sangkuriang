@@ -38,3 +38,6 @@ Route.group(() => {
   Route.resource('', 'LocationController')
 })
   .prefix('location')
+
+Route.resource('category', 'CategoryController')
+  .only(["show", "index"])
