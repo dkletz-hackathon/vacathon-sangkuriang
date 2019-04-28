@@ -17,7 +17,7 @@ class LocationController extends BaseController {
     const locations = await Location.query()
       .with("categories")
       .whereHas("categories", (builder) => {
-        builder.whereIn("id", preferences)
+        builder.whereIn("category_id", preferences)
       })
       .fetch()
     return response.json(locations)
