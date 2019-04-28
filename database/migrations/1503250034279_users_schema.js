@@ -13,7 +13,6 @@ class UserSchema extends Schema {
       table.string('full_name', 100).notNullable()
       table.text('information').notNullable()
       table.string('contact', 150).notNullable()
-      table.string('preferences').notNullable()
       table.timestamps()
     })
   }
